@@ -120,8 +120,15 @@ public class PricingSectionMatcher {
         );
         return refObjectValue == null ||
                 (
-                        (startRefValueValue != null && comparator.compare(refObjectValue, startRefValueValue) >= 0) &&
-                                (endRefValueValue != null && comparator.compare(refObjectValue, endRefValueValue) <= 0)
+                        (
+                                (startRefValueValue == null) ||
+                                (startRefValueValue != null &&
+                                        comparator.compare(refObjectValue, startRefValueValue) >= 0)
+                        ) && (
+                                (endRefValueValue == null) ||
+                                (endRefValueValue != null &&
+                                        comparator.compare(refObjectValue, endRefValueValue) <= 0)
+                        )
                 );
     }
 }
